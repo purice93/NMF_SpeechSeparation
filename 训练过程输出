@@ -1,0 +1,22 @@
+C:\Develop\Anaconda3\python.exe F:/研究生记录/研一/语音分离/语音分离交接/代码/Python（tensoflow）版本/NMF/NMF_speech.py
+完成s1相关文件读取
+生成./s1/tsp_speech_separation_groundtruth_male.wav幅度谱
+完成s2相关文件读取
+生成./s2/tsp_speech_separation_groundtruth_female.wav幅度谱
+清理内存
+为各说话人训练字典
+2017-12-11 09:57:01.145440: W c:\l\tensorflow_1501918863922\work\tensorflow-1.2.1\tensorflow\core\platform\cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-11 09:57:01.146382: W c:\l\tensorflow_1501918863922\work\tensorflow-1.2.1\tensorflow\core\platform\cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-11 09:57:01.146748: W c:\l\tensorflow_1501918863922\work\tensorflow-1.2.1\tensorflow\core\platform\cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE3 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-11 09:57:01.147104: W c:\l\tensorflow_1501918863922\work\tensorflow-1.2.1\tensorflow\core\platform\cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-11 09:57:01.147463: W c:\l\tensorflow_1501918863922\work\tensorflow-1.2.1\tensorflow\core\platform\cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-11 09:57:01.147821: W c:\l\tensorflow_1501918863922\work\tensorflow-1.2.1\tensorflow\core\platform\cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-11 09:57:01.148172: W c:\l\tensorflow_1501918863922\work\tensorflow-1.2.1\tensorflow\core\platform\cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-11 09:57:01.148527: W c:\l\tensorflow_1501918863922\work\tensorflow-1.2.1\tensorflow\core\platform\cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+完成一次矩阵分解,得到W形状：
+(257, 120)
+完成一次矩阵分解,得到W形状：
+(257, 120)
+读取混合音频,得到谱图形状:
+(257, 814)
+开始矩阵分解
