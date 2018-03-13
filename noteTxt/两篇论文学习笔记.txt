@@ -1,0 +1,32 @@
+第一篇
+
+Discriminative NMF and its application to single-channel
+source separation
+
+这篇文章的创新之处在于：
+1、提出了新的目标函数
+2、对训练模型的新的优化方法
+
+
+
+
+
+
+第二篇
+
+Learning a discriminative high-fidelity dictionary for single
+channel source separation
+
+以往方法的主要问题在于，通过分离训练得到的字典来分离混合信号，总是存在一定的误差，
+这些误差被认为是由于字典的重叠的导致的。即D = D1+D2（其中D1+D2是各自源信号的私有字典）
+
+这篇文章中将认为混合信号的字典并不是单个私有的字典简单的组合，而是应该包含有一组公共字典，
+即D = D1+D2+Dc(其中D1+D2是各自源信号的私有字典，Dc是两个源信号的公共字典)
+
+这样，通过大量的训练来得到字典D1+D2+Dc，就可以通过这些字典来分离混合信号
+
+具体步骤：
+	1、对于两个源信号的不同训练集，设训练集个数为n1、n2；通过两两组合来组成混合信号，可以得到n1*n2组混合信号
+	2、对于混合信号Z = X1 + X2。Z=D*C （其中D是字典，C为字典的权重），即Z=(D1+D2+Dc)*(C1+C2+Cc).T
+	3、现在就是训练找到字典D，这里有几个条件，即X1=C'*(D1+Dc);X2=C''*(D2+Dc),加上Z=(D1+D2+Dc)*(C1+C2+Cc).T就可以得到
+		这里具体的训练过程还不可知

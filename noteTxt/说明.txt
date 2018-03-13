@@ -1,0 +1,6 @@
+一共五个文件：
+	mir1k_fdps_4_03_mixture：				混合信号（音乐+人声）
+	mir1k_fdps_4_03_groundtruth_music：		原始的单独的音乐
+	mir1k_fdps_4_03_groundtruth_singing：	原始的单独的人声
+	test_music：							分离出来的音乐
+	test_singing：							分离出来的人声

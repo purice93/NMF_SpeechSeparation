@@ -1,0 +1,16 @@
+问题1：先前的实验，对语音和音乐的分离比较好。尝试实验：语音和语音，且语音语速很短时的效果。
+	样本3和4是两个说话人的实验，样本3语速快，样本4语速慢
+	从分离的结果看，相对于语音和音乐来说，效果不是很好。
+	当语速很快时，效果会好很多；但是，语速很慢时，效果会很差
+	
+
+问题2：改变特征的维数，试验效果
+	先前的实验，特征维数是70。当改变特征维数120和170时，效果基本上不发生变化
+
+
+
+多个语音环境：speech-music、noise-speech、speech1-speech2、speech1-speech2慢语音断续
+	样本1：mir1k-singing_voice_separation
+	样本2：timit-denoising
+	样本3：timit-speech_separation（语速快）
+	样本4：tsp-speech_separation（语速慢）

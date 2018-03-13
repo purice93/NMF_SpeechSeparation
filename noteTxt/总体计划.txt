@@ -1,0 +1,8 @@
+战略：双箭齐发
+1.传统方式：基于nmf
+论文：基于NMF和FCRF的单通道语音分离，http://jst.tsinghuajournals.com/CN/10.16511/j.cnki.qhdxxb.2017.21.016#1
+
+2.最新的方式，基于DNN
+论文：A Maximum Likelihood Approach to Single-channel Source Separation
+作者：王燕南
+相关：https://zhuanlan.zhihu.com/p/23259839 https://www.leiphone.com/news/201708/0i4gbcxKaB6DZQsT.html

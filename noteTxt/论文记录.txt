@@ -1,0 +1,16 @@
+.LOG
+
+论文1：Non-negative Matrix Factorization with Sparseness Constraints
+	NMF的稀疏约束
+
+	1、损失函数及其求解方式+改进的方式
+	2、基本的NMF缺陷：
+		|-得到的特征是全局的，而不是局部的
+
+论文2：Single-Channel Speech Separation using Sparse Non-Negative Matrix
+	
+	1、稀疏性：
+	基本NMF的缺陷，同神经网络有点类似，nmf矩阵通过梯度学习后得到的字典，
+	可能存在过度拟合的情况，这样就导致存在很多无用的字典特征。为了消除过度拟合的情况，
+	对损失函数引入正则化项，这样，限制分解后的矩阵字典的个数，即存在很多的0值向量，
+	就可以达到消除过拟合的目的。
