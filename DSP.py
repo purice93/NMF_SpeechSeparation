@@ -49,7 +49,9 @@ def reconstruct2(f, x1,path):
     N = (32 * sample_rate) // 1000
     mix = librosa.stft(file, n_fft=N, hop_length=N // 2)
     # 这里使用了维纳滤波的合成公式
-    sig = librosa.istft(x1, hop_length=N//2)
+    print(np.shape(x1))
+    print(N//2)
+    sig = librosa.istft(x1, hop_length=N // 2)
     librosa.output.write_wav(path, sig, sample_rate)
 
 # 重构语音,输出语音的频谱矩阵STFT

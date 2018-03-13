@@ -1,3 +1,9 @@
+
+# 基于NMF的单通道语音分离
 # 我什么都没做，都是别人的。。
-# NMF语音分离模型
-使用幅度谱来表示混合信号（相位去哪了）$Y=DH$ 对与分离问题中的多个声源，在幅度谱上$Y=\sum_i^R Y_i$
+
+* 参考文献：
+    * Single-channel speech separation using sequential discriminative dictionary learning
+    * 一种新的基于稀疏表示的单通道盲源分离算法
+
+* 理论尚显不足，逻辑完全没有，代码毫无根据，一切都是炮灰

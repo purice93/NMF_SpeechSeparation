@@ -148,8 +148,13 @@ def main():
     # 为每个说话人拆分系数矩阵（两个人）
     w1S1 = w1Set.append(w0Set)
     w2S2 = w0Set.append(w2Set)
-    H1 = H[:np.shape(w1Set)[1]+np.shape(w0Set)[1]]
-    H2 = H[np.shape(w1Set)[1]+np.shape(w0Set)[1]:np.shape(w1Set)[1]+np.shape(w0Set)[1]+np.shape(w2Set)[1]]
+    try:
+        sio.savemat("h0.mat", {"h0": np.mat(H)})
+    except Exception:
+        print("save error")
+
+    H1 = H[:np.shape(w1Set)[0]+np.shape(w0Set)[0]]
+    H2 = H[np.shape(w1Set)[0]+np.shape(w0Set)[0]:np.shape(w1Set)[0]+np.shape(w0Set)[0]+np.shape(w2Set)[0]]
     res1 = np.dot(w1S1, H1)  # X=WH
     res2 = np.dot(w2S2, H2)  # X=WH
     print("重构背景音和讲话人幅度谱")
