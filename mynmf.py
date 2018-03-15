@@ -69,18 +69,41 @@ def main():
     myarr = np.arange(0, n, 1).tolist()
     for i in range(n):
         # model1 = NMF(n_components=70, init='random', random_state=0)
-        # W = model.fit_transform(w1[:,i])
+        # W = model.fit_transform(np.mat((w1[:, i])).T)
         # H = model.components_
-        # 直接采用矩阵分解
-        # print(w1.shape)
-        # print(np.mat((w1[:, i])).T.shape)
-        H = np.mat(w2).I * np.mat((w1[:, i])).T
-        # 判断H中是否存在负值，如果存在，则不属于内部字典，即属于另外一个字典的特有字典
-        print("std",np.std(H)) # 求标准差
-        if np.std(H) > 1:
+
+
+        W = np.mat(w2)
+        W = tf.cast(W, tf.float32)
+        # print(np.shape(np.mat((w1[:, i])).T),np.shape(W))
+        # tfnmf1 = TFNMF(np.mat((w1[:, i])).T, 70, algo="mud", D=W)  # 这里的调用不同，将之前获得的W传递进入算法
+        # with tf.Session(config=cnf.getConfig()) as sess:
+        #     _, H = tfnmf1.run(sess)
+        #     print("得到激活矩阵H1:")
+        #     print(H.shape)
+        #
+        # sio.savemat("HH.mat", {"H1": H})
+
+        file1 = sio.loadmat("HH.mat")
+        H = file1['H1']
+        # 判断误差
+        print("mult",np.shape((np.mat((w1[:, i])).T),np.multiply(W,H)))
+        if((np.mat((w1[:, i])).T - np.multiply(W,H))**2) < 0.5 :
             w1Set.append(np.array(w1[:, i]))
             # np.row_stack((w2Set, np.array(w1[:, i])))  # 添加一行数据
             myarr.remove(i)
+
+        # 直接采用矩阵分解
+        # print(w1.shape)
+        # print(np.mat((w1[:, i])).T.shape)
+        # H = np.mat(w2).I * np.mat((w1[:, i])).T
+        # 判断H中是否存在负值，如果存在，则不属于内部字典，即属于另外一个字典的特有字典
+        # print("std",np.std(H)) # 求标准差
+        # if np.std(H) > 1:
+        #     w1Set.append(np.array(w1[:, i]))
+        #     # np.row_stack((w2Set, np.array(w1[:, i])))  # 添加一行数据
+        #     myarr.remove(i)
+
         # for j in range(n):
         #     if H[j][0] < 0:
         #         w1Set.append(np.array(w1[:, i]))
@@ -89,14 +112,24 @@ def main():
         #         break
 
     for i in range(n):
+        tfnmf2 = TFNMF(np.mat((w2[:, i])).T, 1, algo="mud", D=np.mat(w1))  # 这里的调用不同，将之前获得的W传递进入算法
+        with tf.Session(config=cnf.getConfig()) as sess:
+            _, H = tfnmf2.run(sess)
+            print("得到激活矩阵H1:")
+            print(H.shape)
+        # 判断误差
+        if ((np.mat((w2[:, i])).T - np.mat(w1) * H) ** 2) < 0.5:
+            w2Set.append(np.array(w2[:, i]))
+
         # model1 = NMF(n_components=70, init='random', random_state=0)
         # W = model.fit_transform(w2[:,i])
         # H = model.components_
-        H = np.mat(w1).I * np.mat((w2[:, i])).T
-        # 判断H中是否存在负值，如果存在，则不属于内部字典，即属于另外一个字典的特有字典
+        # H = np.mat(w1).I * np.mat((w2[:, i])).T
+        # # 判断H中是否存在负值，如果存在，则不属于内部字典，即属于另外一个字典的特有字典
+        #
+        # if np.std(H) > 1:
+        #     w2Set.append(np.array(w2[:, i]))
 
-        if np.std(H) > 1:
-            w2Set.append(np.array(w2[:, i]))
             # np.row_stack((w2Set, np.array(w1[:, i])))  # 添加一行数据
         # for j in range(n):
         #     if H[j][0] < 0:
@@ -163,15 +196,6 @@ def main():
     # 没法直接逆变换回去，所以还需要生成一个mask，这个操作就是假设相位相同
     mask1 = res1 / Mix  # 一个浮点掩蔽
 
-    # # 先不重构，进行相位恢复
-    # x1 = getX1("mix/tsp_speech_separation_mixture.wav", mask1)
-    # print(x1)
-    # # 迭代求解，恢复相位
-    # for i in range(1000):
-    #     x1Mat = np.asmatrix(x1)
-    #     y1Mat = x1Mat * x1Mat.I
-    #     y1 = np.asarray(y1Mat)
-    #     x1 = np.dot(res1 / np.abs(y1), y1)
     signal1 = reconstruct2("mix/tsp_speech_separation_mixture.wav", mask1, "./test7_man.wav")
 
     # 原始
